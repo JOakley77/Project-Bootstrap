@@ -1,0 +1,41 @@
+@import "compass/css3/font-face";
+
+// $customFontPath :   "custom/font/path" !default;
+$customIconsPath    :   "icomoon/customIcons"  !default;
+
+// Custom font path configuration
+// @include font-face(
+//     'custom_font_name',
+//     font-files(
+//         "#{$fontRegPath}.woff", woff,
+//         "#{$fontRegPath}.ttf", truetype
+// 	),
+//     '#{$fontRegPath}.eot',
+//     normal,
+//     normal
+// );
+
+// Icomoon
+@include font-face(
+    'customIcons',
+    font-files(
+        "#{$customIconsPath}.woff?v=3.1.0", woff,
+        "#{$customIconsPath}.ttf?v=3.1.0", truetype
+	),
+    '#{$customIconsPath}.eot?v=3.1.0',
+    normal,
+    normal
+);
+
+[data-icon]:before {
+	font-family: 'customIcons';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+@import "fonts/icomoon";
