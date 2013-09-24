@@ -28,8 +28,7 @@ module.exports = function(grunt) {
 			},
 
 			all: [
-				'../../www/assets/js/public/app.js',
-				'../../www/assets/js/admin/admin.js'
+				'../../www/assets/js/public/app.js'
 			]
 		},
 		concat: {
