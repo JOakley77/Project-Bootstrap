@@ -128,6 +128,34 @@ module.exports = function(grunt) {
 		},
 
 		/**
+		 * Notifications
+		 *
+		 * Send notifications on build status.
+		 */
+		notify : {
+			compass : {
+				options : {
+					message	: 'Compass compiled'
+				}
+			},
+			js : {
+				options : {
+					message : 'JavaScript be ugly now...'
+				}
+			},
+			watch : {
+				options : {
+					message	: 'Application compiled'
+				}
+			},
+			vendor_app : {
+				options : {
+					message : 'Vendor libraries compiled'
+				}
+			}
+		},
+
+		/**
 		 * Watch
 		 *
 		 * Build script watch task to compile as changes are
@@ -136,10 +164,10 @@ module.exports = function(grunt) {
 		watch : {
 			application_code : {
 				files : [ '../../www/assets/js/public/app.js' ],
-				tasks : [ 'main' ]
+				tasks : [ 'default' ]
 			},
 			compass : {
-				files : [ '../compass/sass/**/*' ],
+				files : [ '../compass/sass/*', '../compass/sass/**/*' ],
 				tasks : [ 'compass', 'clean:sass_build' ]
 			}
 		}
@@ -161,6 +189,16 @@ module.exports = function(grunt) {
 	 *
 	 * Defined tasks below.
 	 */
-	grunt.registerTask( 'default',		[ 'jshint', 'concat:app', 'uglify:app', 'compass', 'clean:build', 'clean:sass_build' ] );
-	grunt.registerTask( 'libs',			[ 'jshint', 'concat:vendor_app', 'uglify:vendor_app', 'clean:build' ] );
+
+	// Task :: JavaScript
+	grunt.registerTask( 'js'		, [ 'jshint', 'concat:app', 'uglify:app', 'clean:build' ] );
+
+	// Task :: CSS
+	grunt.registerTask( 'css'		, [ 'compass', 'clean:sass_build' ] );
+
+	// Task :: Default
+	grunt.registerTask( 'default'	, [ 'js', 'css', 'notify:watch' ] );
+
+	// Task :: Vendor libraries
+	grunt.registerTask( 'libs'		, [ 'jshint', 'concat:vendor_app', 'uglify:vendor_app', 'clean:build', 'notify:vendor_app' ] );
 };

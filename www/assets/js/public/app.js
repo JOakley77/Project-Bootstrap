@@ -1,7 +1,7 @@
 "use strict";
 
 var APP = {
-    
+
     config  : {
         url     : {
             base    : CONFIG.base_url
