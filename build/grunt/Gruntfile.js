@@ -148,11 +148,12 @@ module.exports = function(grunt) {
 	/**
 	 * Load Grunt plugins
 	 */
-	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
-	grunt.loadNpmTasks( 'grunt-contrib-concat' );
-	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-clean' );
 	grunt.loadNpmTasks( 'grunt-contrib-compass' );
+	grunt.loadNpmTasks( 'grunt-contrib-concat' );
+	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
+	grunt.loadNpmTasks( 'grunt-notify' );
+	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 
 	/**
@@ -160,6 +161,6 @@ module.exports = function(grunt) {
 	 *
 	 * Defined tasks below.
 	 */
-	grunt.registerTask( 'main',			[ 'jshint', 'concat:app', 'uglify:app', 'compass', 'clean:build', 'clean:sass_build' ] );
+	grunt.registerTask( 'default',		[ 'jshint', 'concat:app', 'uglify:app', 'compass', 'clean:build', 'clean:sass_build' ] );
 	grunt.registerTask( 'libs',			[ 'jshint', 'concat:vendor_app', 'uglify:vendor_app', 'clean:build' ] );
 };
